@@ -3,140 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luan Vinícius | Agro & Dados</title>
+    <title>Luan Vinícius | Dados & Agro</title>
     <style>
-      
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        /* --- ENGENHARIA DO SISTEMA (Variáveis) --- */
+        :root {
+            /* Paleta Definida pelo Usuário */
+            --primary: #299e1b;       
+            --bg-body: #121212;       
+            --bg-card: #1e1e1e;       
+            --text-main: #e0e0e0;     
+            --text-muted: #a0a0a0;    
+            
+            /* Cores Semânticas */
+            --success: #22946E;
+            --warning: #A87A2A;
+            --danger:  #9C2121;
+            --info:    #21498A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         
         body {
-            background-color: #141321; 
-            color: #c7c7c7;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+            justify-content: center;
+            padding: 20px;
             line-height: 1.6;
         }
-      .container {
-            max-width: 800px;
-            width: 90%;
-            margin-top: 60px;
-            text-align: center;
+
+        .container {
+            max-width: 900px;
+            width: 100%;
         }
 
-        h1 {
-            color: #fe428e;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            color: #f8d847;
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin-bottom: 30px;
-        }
-
-        .tagline {
-            font-style: italic;
-            color: #a9fef7;
+        /* --- CABEÇALHO --- */
+        header {
+            border-left: 5px solid var(--primary);
+            padding-left: 20px;
             margin-bottom: 40px;
-            border-left: 3px solid #fe428e;
-            padding-left: 15px;
-            display: inline-block;
         }
 
-        .bio {
-            background: #1f2028;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: left;
-            margin-bottom: 30px;
+        h1 { font-size: 2.5rem; color: var(--primary); }
+        h2 { font-size: 1.2rem; color: var(--text-muted); font-weight: 400; }
+
+        /* --- GRID DE CONTEÚDO --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* --- CARTÕES --- */
+        .card {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: 8px;
             border: 1px solid #333;
+            transition: transform 0.2s, border-color 0.2s;
         }
 
-        .bio strong { color: #fff; }
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
 
-        /* Botões de Projetos e Links */
-        .links {
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        /* --- TAGS --- */
+        .tag-container {
             display: flex;
             flex-wrap: wrap;
-            justify_content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .tag-success { background-color: var(--success); } /* Dominado */
+        .tag-warning { background-color: var(--warning); color: #121212; } /* Aprendendo */
+        .tag-info    { background-color: var(--info); }    /* Ferramenta */
+        .tag-danger  { background-color: var(--danger); }  /* Outros */
+
+        /* --- BOTÕES --- */
+        .btn-group {
+            margin-top: 20px;
+            display: flex;
             gap: 15px;
         }
 
         .btn {
             text-decoration: none;
-            color: #141321;
-            background-color: #a9fef7;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 5px;
             font-weight: bold;
-            transition: transform 0.2s, background 0.2s;
+            transition: 0.3s;
+            display: inline-block;
+            text-align: center;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            background-color: #fe428e;
-            color: #fff;
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
         }
+        .btn-primary:hover { background-color: #238b16; }
 
         .btn-outline {
-            background: transparent;
-            border: 2px solid #a9fef7;
-            color: #a9fef7;
+            border: 1px solid var(--primary);
+            color: var(--primary);
         }
+        .btn-outline:hover { background-color: var(--primary); color: white; }
 
-        .btn-outline:hover {
-            background: #a9fef7;
-            color: #141321;
-        }
-
-        /* Rodapé */
+        /* --- RODAPÉ --- */
         footer {
-            margin-top: auto;
-            padding: 20px;
-            font-size: 0.8rem;
-            opacity: 0.6;
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid #333;
+            padding-top: 20px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Luan Vinícius</h1>
-        <h2>Engenheiro Agrônomo & Analista de Dados</h2>
-        
-        <div class="tagline">
-            "Dados não mentem, mas precisam ser escavados com inteligência."
+        <header>
+            <h1>Luan Vinícius</h1>
+            <h2>Engenheiro Agrônomo | Migrando para Análise de Dados</h2>
+            <p style="margin-top: 10px; color: var(--text-muted);">
+                "Dados não mentem, mas precisam ser ouvidos."
+            </p>
+        </header>
+
+        <div class="grid">
+            
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                
+                <section class="card">
+                    <h3>🧑‍💻 Bio Resumida</h3>
+                    <p>Atualmente focado em <strong>análises exploratórias</strong> de dados públicos do agronegócio.</p>
+                    <p style="margin-top: 10px;">Busco unir a vivência de campo com a precisão do Python para gerar decisões baseadas em fatos.</p>
+                </section>
+
+                <section class="card">
+                    <h3>🛠️ Stack & Status</h3>
+                    <div class="tag-container">
+                        <span class="tag tag-success">Python</span>
+                        <span class="tag tag-success">Pandas</span>
+                        <span class="tag tag-success">Excel</span>
+                        <span class="tag tag-success">Jupyter</span>
+                        <span class="tag tag-success">Git/GitHub</span>
+                        <span class="tag tag-warning">SQL</span>
+                    </div>
+                    <p style="font-size: 0.8rem; margin-top: 15px; color: var(--text-muted);">
+                        <span style="color:var(--success)">■</span> Dominado 
+                        <span style="color:var(--warning)">■</span> Estudando
+                    </p>
+                </section>
+
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                
+                <section class="card" style="border-color: var(--primary);">
+                    <h3>📂 Destaque: Análise Agrofit</h3>
+                    <p>Exploração de padrões na base de dados de defensivos agrícolas do Brasil.</p>
+                    <div class="tag-container">
+                        <span class="tag tag-info">Data Viz</span>
+                        <span class="tag tag-info">Exploratory Analysis</span>
+                    </div>
+                    <div class="btn-group">
+                        <a href="https://github.com/luan-vsd/Analise-Agrofit" class="btn btn-primary" style="width: 100%;">Ver Código</a>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h3>📫 Contato</h3>
+                    <p>Vamos falar sobre dados?</p>
+                    <div class="btn-group" style="flex-direction: column; gap: 10px;">
+                        <a href="https://www.linkedin.com/in/luan-vinicius-silva-dias/" class="btn btn-outline">LinkedIn</a>
+                        <a href="mailto:luanvinicius@pm.me" class="btn btn-outline">Email</a>
+                    </div>
+                </section>
+
+            </div>
         </div>
 
-        <div class="bio">
-            <p>🌾 <strong>De onde venho:</strong> Do campo. Trago a vivência prática do agronegócio.</p>
-            <p>📊 <strong>Para onde vou:</strong> Para os dados. Meu objetivo é de transformar a maneira que as pessoas enxergam os dados com Python.</p>
-            <br>
-            <p>Atualmente focado em dissecar o <strong>Agrofit</strong> e entender o que os dados públicos do nosso sistema de agroquímicos têm a dizer.</p>
-        </div>
-
-        <div class="links">
-            <a href="https://github.com/luan-vsd" class="btn">Ver meu GitHub</a>
-            <a href="https://www.linkedin.com/in/luan-vinicius-silva-dias/" class="btn btn-outline">LinkedIn</a>
-            <a href="mailto:luanvinicius@pm.me" class="btn btn-outline">Mandar E-mail</a>
-        </div>
-        
-        <br>
-        
-        <div class="bio" style="text-align: center; border-color: #fe428e;">
-            <h3 style="color: #fe428e; margin-bottom: 10px;">🚀 Projeto em Destaque: Análise Agrofit</h3>
-            <p style="margin-bottom: 15px; font-size: 0.9rem;">Uma exploração profunda dos defensivos agrícolas registrados no Brasil.</p>
-            <a href="https://github.com/luan-vsd/Analise-Agrofit" style="color: #f8d847; text-decoration: none; border-bottom: 1px dashed #f8d847;">Acessar Análise &rarr;</a>
-        </div>
-
+        <footer>
+            <p>2026 • Luan Vinícius Silva Dias</p>
+        </footer>
     </div>
-
-    <footer>
-        &copy; 2026 Luan Vinícius.
-    </footer>
 
 </body>
 </html>
